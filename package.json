@@ -4,7 +4,8 @@
   "description": "CLI to create projects from templates",
   "main": "./build/index.js",
   "bin": {
-    "generate-data": "./build/bin/generate-data.js"
+    "generate-data": "./build/bin/generate-data.js",
+    "tsdb-test": "./build/bin/tsdb-test.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
