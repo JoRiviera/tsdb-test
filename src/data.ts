@@ -44,7 +44,7 @@ export function createEnterpriseData(nbr: number): EdgeData[] {
                     const machineId = uuidv4();
                     for(const [label, value] of Object.entries(makeDataPoints())){
                         data.push({
-                            timestamp: (process.hrtime.bigint() / 1000n).toString(),
+                            timestamp: (process.hrtime.bigint() / BigInt(1000)).toString(),
                             enterpriseId,
                             siteId,
                             areaId,
