@@ -3,9 +3,9 @@
 ## Commands
 ### `generate-data [T]`
 Used to generate fake IIoT edges data points.
-`[T]` is the number of thousands of data points 
+`[T]` is the multiple of 10 thousand data points.
 
-Per thousand data points: 
+Per 10 thousand data points: 
 - 1 enterprise id
 - x 10 sites id
 - x 10 areas id
