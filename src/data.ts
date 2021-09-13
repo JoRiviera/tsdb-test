@@ -6,16 +6,25 @@ export type EdgeData = {
     siteId: string,
     areaId: string,
     machineId: string,
-    engineRpm: number,
-    engineTemperature: number,
-    carrierDistanceRan: number,
-    output: number,
-    powerVoltage: number,
-    engineVoltage: number,
-    carrierVoltage: number,
-    outsideTemperature: number,
-    input: number,
-    humidity: number,
+    data: {
+        label: string,
+        value: number,
+    }
+}
+
+function makeDataPoints(){
+    return {
+        engineRpm: Math.floor(Math.random() * 5000 + 10000),
+        engineTemperature: Math.floor(Math.random() * 4000 + 3000) / 100,
+        carrierDistanceRan: Math.floor(Math.random() * 5000),
+        output: Math.floor(Math.random() * 10),
+        powerVoltage: Math.floor(Math.random() * 10000 + 15000) / 100,
+        engineVoltage: Math.floor(Math.random() * 10000 + 15000) / 100,
+        carrierVoltage: Math.floor(Math.random() * 10000 + 15000) / 100,
+        outsideTemperature: Math.floor(Math.random() * 1000 + 2000) / 100,
+        input: Math.floor(Math.random() * 20),
+        humidity: Math.floor(Math.random() * 1000 + 4000) / 100,
+    };
 }
 
 /**
@@ -32,23 +41,19 @@ export function createEnterpriseData(nbr: number): EdgeData[] {
             for(let j = 0; j < 10; j++){
                 const areaId = uuidv4();
                 for(let k = 0; k < 10; k++){
-                    data.push({
-                        timestamp: (process.hrtime.bigint() / 1000n).toString(),
-                        enterpriseId,
-                        siteId,
-                        areaId,
-                        machineId: uuidv4(),
-                        engineRpm: Math.floor(Math.random() * 5000 + 10000),
-                        engineTemperature: Math.floor(Math.random() * 4000 + 3000) / 100,
-                        carrierDistanceRan: Math.floor(Math.random() * 5000),
-                        output: Math.floor(Math.random() * 10),
-                        powerVoltage: Math.floor(Math.random() * 10000 + 15000) / 100,
-                        engineVoltage: Math.floor(Math.random() * 10000 + 15000) / 100,
-                        carrierVoltage: Math.floor(Math.random() * 10000 + 15000) / 100,
-                        outsideTemperature: Math.floor(Math.random() * 1000 + 2000) / 100,
-                        input: Math.floor(Math.random() * 20),
-                        humidity: Math.floor(Math.random() * 1000 + 4000) / 100,
-                    });
+                    const machineId = uuidv4();
+                    for(const [label, value] of Object.entries(makeDataPoints())){
+                        data.push({
+                            timestamp: (process.hrtime.bigint() / BigInt(1000)).toString(),
+                            enterpriseId,
+                            siteId,
+                            areaId,
+                            machineId,
+                            data: {
+                                label, value
+                            }
+                        });
+                    }
                 }
             }
         }

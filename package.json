@@ -4,7 +4,8 @@
   "description": "CLI to create projects from templates",
   "main": "./build/index.js",
   "bin": {
-    "generate-data": "./build/bin/generate-data.js"
+    "generate-data": "./build/bin/generate-data.js",
+    "tsdb-test": "./build/bin/tsdb-test.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +20,7 @@
     "inquirer": "^8.1.2",
     "listr": "^0.14.3",
     "ncp": "^2.0.0",
+    "node-fetch": "^2.6.2",
     "pkg-install": "^1.0.0",
     "uuid": "^8.3.2"
   },
@@ -26,7 +28,8 @@
     "@types/inquirer": "^8.1.1",
     "@types/listr": "^0.14.4",
     "@types/ncp": "^2.0.5",
-    "@types/node": "^11.15.54",
+    "@types/node": "^14.17.1",
+    "@types/node-fetch": "^2.5.12",
     "@types/uuid": "^8.3.1",
     "typescript": "^4.4.2"
   }
